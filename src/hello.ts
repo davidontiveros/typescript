@@ -2,7 +2,7 @@
  * Created by daviD on 05/05/2017.
  */
 
-import {sayHelloToConsole} from './salute';
+import {sayHelloToConsole} from './ConsoleMessages';
 
 interface Person
 {
@@ -31,7 +31,13 @@ function sayHello(person: Person)
 
 function sayHelloToSystemUser(systemUser: SystemUser)
 {
-    return "Hello "+systemUser.fullName;
+    return "Hello Mr. "+systemUser.fullName;
+}
+
+function sayHelloToHTML(divId: string, systemUser: SystemUser)
+{
+    const div = document.getElementById(divId);
+    div.innerText = sayHelloToSystemUser(systemUser);
 }
 
 var person:Person =
@@ -42,7 +48,6 @@ var person:Person =
 
 var systemUser:SystemUser = new SystemUser("David", "Ontiveros");
 
-//document.body.innerHTML = sayHello(person);
-//document.body.innerHTML = sayHelloToSystemUser(systemUser);
 
 sayHelloToConsole('daviD');
+sayHelloToHTML('loading-div', systemUser);
