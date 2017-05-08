@@ -1,2 +1,2 @@
 # typescript
-Typescript based app
+Angular 2 + Typescript skeleton app
