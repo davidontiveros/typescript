@@ -1,20 +1,13 @@
 /**
  * Created by daviD on 07/05/2017.
  */
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { User } from './user';
-
-
-const USERS: User[] = [
-    {id: 1, name: 'David Ontiveros', phone: '8115770042'}
-    ,{id: 2, name: 'Miguel Leon', phone: ''}
-    ,{id: 3, name: 'Rosario Sifuentes', phone: ''}
-    ,{id: 4, name: 'Beto Ontiveros', phone: ''}
-];
-
+import {UserService} from './user.service'
 
 @Component({
     selector: 'my-app',
+
     template: `
         <h1>Users</h1>
 
@@ -29,6 +22,7 @@ const USERS: User[] = [
         
         <user-detail [user]="selectedUser"></user-detail>
     `,
+
     styles: [`
         .user-list li{
             cursor: pointer;   
@@ -43,18 +37,31 @@ const USERS: User[] = [
             background-color: #BBD8DC !important;
             color: white;
         }
-    `]
+    `],
+
+    providers: [UserService]
 })
 
 // THIS SHOULD AFTER @Component code .. ORDER MATTERS!
 // logic & public properties exposed to view for binding
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-    users = USERS;
-
+    users: User[];
     selectedUser:User;
+
+    // needed for service injection
+    constructor(private userService: UserService) {}
+
+    loadUsers(): void {
+        this.userService.getHeroes().then( result => this.users = result);
+
+    }
 
     onSelectUser(user:User): void{
         this.selectedUser = user;
+    }
+
+    ngOnInit(): void{
+        this.loadUsers();
     }
 }
