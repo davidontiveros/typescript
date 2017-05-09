@@ -53,7 +53,7 @@ export class AppComponent implements OnInit{
     constructor(private userService: UserService) {}
 
     loadUsers(): void {
-        this.userService.getHeroes().then( result => this.users = result);
+        this.userService.getUsers().then(result => this.users = result);
 
     }
 
