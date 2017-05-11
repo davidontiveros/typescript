@@ -7,6 +7,7 @@ import { FormsModule }   from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 import { UserDetailComponent }  from './user-detail.component';
+import {UsersComponent} from "./users.component";
 
 @NgModule({
     imports:      [
@@ -15,6 +16,7 @@ import { UserDetailComponent }  from './user-detail.component';
     ],
     declarations: [
         AppComponent,
+        UsersComponent,
         UserDetailComponent
     ],
     bootstrap: [
